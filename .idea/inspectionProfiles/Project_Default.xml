@@ -1,0 +1,118 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="Eslint" enabled="true" level="INFORMATION" enabled_by_default="true" />
+    <inspection_tool class="GoDfaErrorMayBeNotNil" enabled="true" level="WARNING" enabled_by_default="true">
+      <functions>
+        <function importPath="database/sql" name="Open" />
+      </functions>
+    </inspection_tool>
+    <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="7">
+            <item index="0" class="java.lang.String" itemvalue="nobr" />
+            <item index="1" class="java.lang.String" itemvalue="noembed" />
+            <item index="2" class="java.lang.String" itemvalue="comment" />
+            <item index="3" class="java.lang.String" itemvalue="noscript" />
+            <item index="4" class="java.lang.String" itemvalue="embed" />
+            <item index="5" class="java.lang.String" itemvalue="script" />
+            <item index="6" class="java.lang.String" itemvalue="CodeMirror" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="JupyterPackageInspection" enabled="true" level="INFORMATION" enabled_by_default="true" />
+    <inspection_tool class="PyInterpreterInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="78">
+            <item index="0" class="java.lang.String" itemvalue="ldm" />
+            <item index="1" class="java.lang.String" itemvalue="factory-boy" />
+            <item index="2" class="java.lang.String" itemvalue="mypy" />
+            <item index="3" class="java.lang.String" itemvalue="python-dateutil" />
+            <item index="4" class="java.lang.String" itemvalue="django-stubs" />
+            <item index="5" class="java.lang.String" itemvalue="psycopg2-binary" />
+            <item index="6" class="java.lang.String" itemvalue="setuptools" />
+            <item index="7" class="java.lang.String" itemvalue="markupsafe" />
+            <item index="8" class="java.lang.String" itemvalue="coreschema" />
+            <item index="9" class="java.lang.String" itemvalue="mccabe" />
+            <item index="10" class="java.lang.String" itemvalue="certifi" />
+            <item index="11" class="java.lang.String" itemvalue="pyparsing" />
+            <item index="12" class="java.lang.String" itemvalue="ruamel-yaml-clib" />
+            <item index="13" class="java.lang.String" itemvalue="psycopg2-pool" />
+            <item index="14" class="java.lang.String" itemvalue="asgiref" />
+            <item index="15" class="java.lang.String" itemvalue="typing-extensions" />
+            <item index="16" class="java.lang.String" itemvalue="gunicorn" />
+            <item index="17" class="java.lang.String" itemvalue="jinja2" />
+            <item index="18" class="java.lang.String" itemvalue="django-filter" />
+            <item index="19" class="java.lang.String" itemvalue="charset-normalizer" />
+            <item index="20" class="java.lang.String" itemvalue="django-stubs-ext" />
+            <item index="21" class="java.lang.String" itemvalue="idna" />
+            <item index="22" class="java.lang.String" itemvalue="django-environ" />
+            <item index="23" class="java.lang.String" itemvalue="types-pytz" />
+            <item index="24" class="java.lang.String" itemvalue="mypy-extensions" />
+            <item index="25" class="java.lang.String" itemvalue="pep8" />
+            <item index="26" class="java.lang.String" itemvalue="pycodestyle" />
+            <item index="27" class="java.lang.String" itemvalue="requests" />
+            <item index="28" class="java.lang.String" itemvalue="drf-yasg" />
+            <item index="29" class="java.lang.String" itemvalue="djangorestframework-stubs" />
+            <item index="30" class="java.lang.String" itemvalue="flake8" />
+            <item index="31" class="java.lang.String" itemvalue="sqlparse" />
+            <item index="32" class="java.lang.String" itemvalue="tomli" />
+            <item index="33" class="java.lang.String" itemvalue="urllib3" />
+            <item index="34" class="java.lang.String" itemvalue="types-pyyaml" />
+            <item index="35" class="java.lang.String" itemvalue="djangorestframework" />
+            <item index="36" class="java.lang.String" itemvalue="postgres" />
+            <item index="37" class="java.lang.String" itemvalue="uritemplate" />
+            <item index="38" class="java.lang.String" itemvalue="coverage" />
+            <item index="39" class="java.lang.String" itemvalue="autopep8" />
+            <item index="40" class="java.lang.String" itemvalue="six" />
+            <item index="41" class="java.lang.String" itemvalue="pyflakes" />
+            <item index="42" class="java.lang.String" itemvalue="packaging" />
+            <item index="43" class="java.lang.String" itemvalue="toml" />
+            <item index="44" class="java.lang.String" itemvalue="django" />
+            <item index="45" class="java.lang.String" itemvalue="coreapi" />
+            <item index="46" class="java.lang.String" itemvalue="faker" />
+            <item index="47" class="java.lang.String" itemvalue="ruamel-yaml" />
+            <item index="48" class="java.lang.String" itemvalue="itypes" />
+            <item index="49" class="java.lang.String" itemvalue="isort" />
+            <item index="50" class="java.lang.String" itemvalue="pytz" />
+            <item index="51" class="java.lang.String" itemvalue="inflection" />
+            <item index="52" class="java.lang.String" itemvalue="types-requests" />
+            <item index="53" class="java.lang.String" itemvalue="types-urllib3" />
+            <item index="54" class="java.lang.String" itemvalue="pytest" />
+            <item index="55" class="java.lang.String" itemvalue="pytest-asyncio" />
+            <item index="56" class="java.lang.String" itemvalue="hexagonit-recipe-download" />
+            <item index="57" class="java.lang.String" itemvalue="pyflink" />
+            <item index="58" class="java.lang.String" itemvalue="geojson" />
+            <item index="59" class="java.lang.String" itemvalue="greenlet" />
+            <item index="60" class="java.lang.String" itemvalue="SQLAlchemy" />
+            <item index="61" class="java.lang.String" itemvalue="typing_extensions" />
+            <item index="62" class="java.lang.String" itemvalue="crate" />
+            <item index="63" class="java.lang.String" itemvalue="pueblo" />
+            <item index="64" class="java.lang.String" itemvalue="iniconfig" />
+            <item index="65" class="java.lang.String" itemvalue="pluggy" />
+            <item index="66" class="java.lang.String" itemvalue="pyarrow" />
+            <item index="67" class="java.lang.String" itemvalue="verlib2" />
+            <item index="68" class="java.lang.String" itemvalue="adbc-driver-postgresql" />
+            <item index="69" class="java.lang.String" itemvalue="tzdata" />
+            <item index="70" class="java.lang.String" itemvalue="numpy" />
+            <item index="71" class="java.lang.String" itemvalue="sqlalchemy" />
+            <item index="72" class="java.lang.String" itemvalue="pandas" />
+            <item index="73" class="java.lang.String" itemvalue="adbc-driver-manager" />
+            <item index="74" class="java.lang.String" itemvalue="docutils-stubs" />
+            <item index="75" class="java.lang.String" itemvalue="polars" />
+            <item index="76" class="java.lang.String" itemvalue="docutils" />
+            <item index="77" class="java.lang.String" itemvalue="pygments" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="SqlResolveInspection" enabled="true" level="ERROR" enabled_by_default="true">
+      <option name="suppressForPossibleStringLiterals" value="true" />
+    </inspection_tool>
+  </profile>
+</component>

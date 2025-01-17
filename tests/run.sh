@@ -12,8 +12,8 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-command -v flowctl-go >/dev/null 2>&1 || {
-  echo >&2 "flowctl-go must be available via PATH, aborting."
+command -v flowctl >/dev/null 2>&1 || {
+  echo >&2 "flowctl must be available via PATH, aborting."
   exit 1
 }
 
@@ -57,7 +57,7 @@ if [[ -d "${TMPDIR}" ]]; then
 fi
 mkdir -p "${TMPDIR}"
 
-# `flowctl-go` commands which interact with the data plane look for *_ADDRESS
+# `flowctl` commands which interact with the data plane look for *_ADDRESS
 # variables, which are created by the temp-data-plane we're about to start.
 export BROKER_ADDRESS=unix://localhost${TMPDIR}/gazette.sock
 export CONSUMER_ADDRESS=unix://localhost${TMPDIR}/consumer.sock
@@ -66,7 +66,7 @@ export CONSUMER_ADDRESS=unix://localhost${TMPDIR}/consumer.sock
 # --sigterm to verify we cleanly tear down the test catalog (otherwise it hangs).
 # --tempdir to use our known TESTDIR rather than creating a new temporary directory.
 # --unix-sockets to create UDS socket files in TESTDIR in well-known locations.
-flowctl-go temp-data-plane \
+flowctl temp-data-plane \
   --log.level info \
   --sigterm \
   --network "flow-test" \
@@ -130,7 +130,7 @@ cat tests/template.flow.yaml | envsubst >"${CATALOG_SOURCE}"
 BUILD_ID=1122334455667788
 
 # Build the catalog.
-flowctl-go api build \
+flowctl api build \
   --build-id ${BUILD_ID} \
   --build-db ${TMPDIR}/builds/${BUILD_ID} \
   --source ${CATALOG_SOURCE} \
@@ -138,7 +138,7 @@ flowctl-go api build \
   bail "Build failed."
 
 # Activate the catalog.
-flowctl-go api activate --build-id ${BUILD_ID} --all --network "flow-test" --log.level info || bail "Activate failed."
+flowctl api activate --build-id ${BUILD_ID} --all --network "flow-test" --log.level info || bail "Activate failed."
 
 # When we try to read the container name below, we assume that there will only be 1
 # materialize-sqlite container. This sleep makes it more likely that any materialize-sqlite
@@ -169,7 +169,7 @@ while true; do
 done
 
 # Clean up the activated catalog.
-flowctl-go api delete --build-id ${BUILD_ID} --all --log.level info || bail "Delete failed."
+flowctl api delete --build-id ${BUILD_ID} --all --log.level info || bail "Delete failed."
 
 # Will be printed by the shutdown trap *after* any shutdown logging from flowctl
 TEST_STATUS="Test Passed"

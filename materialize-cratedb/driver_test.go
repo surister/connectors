@@ -17,6 +17,12 @@ import (
 	_ "github.com/jackc/pgx/v5/stdlib"
 )
 
+// By default:
+// postgres wire protocol port is '5432'
+// user is 'crate' and is admin
+// password is not needed locally, passing anything will work
+// database is ignored by CrateDB, passing anything will work
+// schema is 'doc'
 func testConfig() *config {
 	return &config{
 		Address:  "localhost:5432",
@@ -27,6 +33,37 @@ func testConfig() *config {
 	}
 }
 
+// Test that the generated Uri is valid for CrateDB, when using the postgres protocol (port 5432),
+// the uri is mostly the same as postgres, see docstring of `testConfig` for default details.
+func TestCorrectUri(t *testing.T) {
+	cfg := testConfig()
+
+	if cfg.ToURI() != "postgres://crate:crate@localhost:5432/crate" {
+		t.Errorf("Uri is not valid")
+	}
+}
+
+// Check that we can connect to CrateDB and issue a simple select; also check that
+// we are in fact querying CrateDB, and not other Postgres compatible database -- for sanity.
+func TestConnectsToCrate(t *testing.T) {
+	cfg := testConfig()
+	db, err := stdsql.Open("pgx", cfg.ToURI())
+
+	var version string
+	query := "SELECT version();"
+	// Version example:
+	// "CrateDB 5.9.4 (built 5d7e047/NA, Linux 6.11.6-arch1-1 amd64, OpenJDK 64-Bit Server VM 22.0.2+9)"
+
+	err = db.QueryRow(query).Scan(&version)
+
+	if !strings.HasPrefix(version, "CrateDB") {
+		// Let's not accidentally query a Postgres instance.
+		t.Errorf("Is this targeting a CrateDB server? %s", version)
+	}
+	require.NoError(t, err)
+	defer db.Close()
+}
+
 func TestValidateAndApply(t *testing.T) {
 	ctx := context.Background()
 
@@ -34,7 +71,7 @@ func TestValidateAndApply(t *testing.T) {
 
 	resourceConfig := tableConfig{
 		Table:  "target",
-		Schema: "public",
+		Schema: "doc",
 	}
 
 	db, err := stdsql.Open("pgx", cfg.ToURI())
@@ -43,7 +80,7 @@ func TestValidateAndApply(t *testing.T) {
 
 	boilerplate.RunValidateAndApplyTestCases(
 		t,
-		newPostgresDriver(),
+		newCrateDriver(),
 		cfg,
 		resourceConfig,
 		func(t *testing.T) string {
@@ -75,7 +112,7 @@ func TestValidateAndApplyMigrations(t *testing.T) {
 
 	resourceConfig := tableConfig{
 		Table:  "target",
-		Schema: "public",
+		Schema: "doc",
 	}
 
 	db, err := stdsql.Open("pgx", cfg.ToURI()+"?default_query_exec_mode=exec")
@@ -84,7 +121,7 @@ func TestValidateAndApplyMigrations(t *testing.T) {
 
 	sql.RunValidateAndApplyMigrationsTests(
 		t,
-		newPostgresDriver(),
+		newCrateDriver(),
 		cfg,
 		resourceConfig,
 		func(t *testing.T) string {

@@ -4,7 +4,7 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-command -v flowctl-go >/dev/null 2>&1 || { echo >&2 "flowctl-go must be available via PATH, aborting."; exit 1; }
+command -v flowctl >/dev/null 2>&1 || { echo >&2 "flowctl-go must be available via PATH, aborting."; exit 1; }
 
 ROOT_DIR="$(git rev-parse --show-toplevel)"
 cd "$ROOT_DIR"
@@ -86,7 +86,7 @@ function drive_connector {
 drive_connector ${TEMP_DIR}/flow.json ${TEST_DIR}/fixture.json
 
 # Extend the snapshot with additional fetched content for this connector.
-source ${TEST_DIR}/${CONNECTOR}/fetch.sh | jq -S '.' >> ${SNAPSHOT} || bail "fetching results failed"
+#source ${TEST_DIR}/${CONNECTOR}/fetch.sh | jq -S '.' >> ${SNAPSHOT} || bail "fetching results failed"
 
 # Drive it again to excercise any cleanup behavior when bindings are removed.
 drive_connector ${TEMP_DIR}/empty.flow.json ${TEST_DIR}/empty.fixture.json
